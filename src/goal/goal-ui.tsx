@@ -25,12 +25,20 @@ import {
     useGoalProgramAccount,
 } from "./goal-data-access";
 
-const goalTemplates = [
-    { icon: Shield, title: "Emergency Fund", amount: 1, color: ["#6366F1", "#8B5CF6"], category: "Emergency" },
-    { icon: Plane, title: "Vacation", amount: 5, color: ["#3B82F6", "#06B6D4"], category: "Vacation" },
-    { icon: Car, title: "New Car", amount: 2, color: ["#10B981", "#34D399"], category: "Car" },
-    { icon: Home, title: "House Down Payment", amount: 5, color: ["#F59E0B", "#FBBF24"], category: "Home" },
-    { icon: GraduationCap, title: "Education", amount: 1.5, color: ["#8B5CF6", "#6366F1"], category: "Education" },
+type GoalTemplate = {
+  icon: React.ComponentType<any>;
+  title: string;
+  amount: number;
+  color: [string, string];   // ← 2‑item tuple
+  category: string;
+};
+
+export const goalTemplates: GoalTemplate[] = [
+  { icon: Shield,        title: "Emergency Fund",      amount: 1,   color: ["#6366F1", "#8B5CF6"], category: "Emergency" },
+  { icon: Plane,         title: "Vacation",            amount: 5,   color: ["#3B82F6", "#06B6D4"], category: "Vacation" },
+  { icon: Car,           title: "New Car",             amount: 2,   color: ["#10B981", "#34D399"], category: "Car" },
+  { icon: Home,          title: "House Down Payment",  amount: 5,   color: ["#F59E0B", "#FBBF24"], category: "Home" },
+  { icon: GraduationCap, title: "Education",           amount: 1.5, color: ["#8B5CF6", "#6366F1"], category: "Education" },
 ];
 
 type GoalCardProps = {

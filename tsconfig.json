@@ -11,8 +11,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@project/anchor": ["anchor/src"],
-      "@/*": ["./src/*"]
+      "@project/anchor": ["solminea/src"],
+      "@/*": ["src/*"]
     }
   }
 }
