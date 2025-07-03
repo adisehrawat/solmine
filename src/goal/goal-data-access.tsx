@@ -39,7 +39,6 @@ export function useGoalProgram() {
         [cluster]
     );
     const program = getSolmineaProgram(provider);
-    console.log(program);
 
     const accounts = useQuery({
         queryKey: ["goal", "all", { cluster }],
