@@ -31,8 +31,7 @@ const goalTemplates = [
     { icon: Car, title: "New Car", amount: 2, color: ["#10B981", "#34D399"], category: "Car" },
     { icon: Home, title: "House Down Payment", amount: 5, color: ["#F59E0B", "#FBBF24"], category: "Home" },
     { icon: GraduationCap, title: "Education", amount: 1.5, color: ["#8B5CF6", "#6366F1"], category: "Education" },
-] as const;
-
+];
 
 type GoalCardProps = {
     goal: {
