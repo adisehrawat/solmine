@@ -3,7 +3,7 @@
 import React, { ReactNode, Suspense, useEffect, useRef } from 'react';
 
 import { WalletButton } from '../solana/solana-provider';
-import { AccountChecker } from '../Account/account-ui';
+import { AccountChecker } from '../account/account-ui';
 import {
   ClusterChecker,
   ClusterUiSelect,

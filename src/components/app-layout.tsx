@@ -3,7 +3,7 @@ import { Toaster } from './ui/sonner'
 import { AppHeader } from '@/components/app-header'
 import React from 'react'
 import { ClusterChecker } from '@/components/cluster/cluster-ui'
-import { AccountChecker } from '@/components/Account/account-ui'
+import { AccountChecker } from '@/components/account/account-ui'
 
 export function AppLayout({
     children,
