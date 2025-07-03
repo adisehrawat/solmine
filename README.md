@@ -1,86 +1,82 @@
-# solmine-basic
+# 🚀 SolMine
 
-This is a Vite app containing:
+> 💰 A decentralized goal-based savings platform built on the **Solana blockchain**.
 
-- Tailwind CSS setup for styling
-- Useful wallet UI elements setup using [@solana/web3.js](https://www.npmjs.com/package/@solana/web3.js)
-- A basic Greeter Solana program written in Anchor
-- UI components for interacting with the Greeter program using the Anchor generated client
+SolMine empowers users to create financial goals, deposit SOL tokens towards those goals, and track their progress — all in a seamless and transparent on-chain experience.
 
-## Getting Started
+<table>
+  <tr>
+    <td align="center">
+      <img src="./screenshots/ss1.png" alt="SolMine" width=300 />
+    </td>
+  </tr>
+</table>
 
-### Installation
+<CTAButton label="View on GitHub" to="https://github.com/adisehrawat/solmine.git" />
 
-#### Download the template
+## ✨ Features
 
-```shell
-pnpm create solana-dapp@latest -t gh:solana-developers/solana-templates/legacy/solmine-basic
-```
+- 🎯 **Create Financial Goals** with a title, amount, and category
+- 📥 **Deposit SOL** towards your goals
+- 🔒 **Secure Smart Contract** using [Anchor](https://project-serum.github.io/anchor/)
+- 📊 **Track Progress** visually on a modern UI
+- 💻 **Next.js frontend** with Tailwind CSS and ShadCN UI
+- 🔐 Wallet integration via Solana wallet adapter
 
-#### Install Dependencies
+---
 
-```shell
-pnpm install
-```
+## 🛠️ Tech Stack
 
-## Apps
+| Tech             | Description                     |
+|------------------|---------------------------------|
+| [Solana](https://solana.com)         | Blockchain Layer |
+| [Anchor](https://book.anchor-lang.com/)          | Smart Contract Framework |
+| [Next.js](https://nextjs.org)        | Web Frontend |
+| [React](https://reactjs.org)         | UI Framework |
+| [Tailwind CSS](https://tailwindcss.com) | Styling |
+| [ShadCN UI](https://ui.shadcn.dev/)  | Component Library |
+| [Solana Wallet Adapter](https://github.com/solana-labs/wallet-adapter) | Wallet Connect |
 
-### anchor
+---
 
-This is a Solana program written in Rust using the Anchor framework.
+## 📸 Demo
 
-#### Commands
+> Live demo: [https://solmine.xyz](https://solmine.xyz)  
+> Test it locally using the guide below.
 
-You can use any normal anchor commands. Either move to the `anchor` directory and run the `anchor` command or prefix the command with `pnpm`, eg: `pnpm anchor`.
+---
 
-#### Sync the program id:
+## 🧪 Local Development
 
-Running this command will create a new keypair in the `anchor/target/deploy` directory and save the address to the Anchor config file and update the `declare_id!` macro in the `./src/lib.rs` file of the program.
+### 🧩 Prerequisites
 
-You will manually need to update the constant in `anchor/lib/counter-exports.ts` to match the new program id.
+- Node.js `>=18`
+- Rust
+- Anchor CLI
+- Solana CLI
+- Git
 
-```shell
-pnpm anchor keys sync
-```
+### 🧰 Setup Instructions
 
-#### Build the program:
+```bash
+# 1. Clone the repo
+git clone https://github.com/adisehrawat/solmine.git
+cd solmine
 
-```shell
-pnpm anchor-build
-```
+# 2. Install frontend dependencies
+cd solmine
+npm install
 
-#### Start the test validator with the program deployed:
+# 3. Install Anchor dependencies and build program
+cd ../solmine-program
+anchor build
 
-```shell
-pnpm anchor-localnet
-```
+# 4. Run a local Solana test validator
+solana-test-validator
 
-#### Run the tests
+# 5. Deploy the Anchor program locally
+anchor deploy
 
-```shell
-pnpm anchor-test
-```
-
-#### Deploy to Devnet
-
-```shell
-pnpm anchor deploy --provider.cluster devnet
-```
-
-### web
-
-This is a React app that uses the Anchor generated client to interact with the Solana program.
-
-#### Commands
-
-Start the web app
-
-```shell
-pnpm dev
-```
-
-Build the web app
-
-```shell
-pnpm build
-```
+# 6. Start frontend
+cd ../solmine-front
+npm run dev
