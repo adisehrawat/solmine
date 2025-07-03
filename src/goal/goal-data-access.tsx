@@ -6,7 +6,7 @@ import {
 import { BN } from "@coral-xyz/anchor";
 
 import { useConnection } from "@solana/wallet-adapter-react";
-import { Cluster, PublicKey, SystemProgram } from "@solana/web3.js";
+import { Cluster, PublicKey } from "@solana/web3.js";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useCluster } from "../components/cluster/cluster-data-access";
@@ -55,16 +55,16 @@ export function useGoalProgram() {
         mutationKey: ["goalEntry", "create", { cluster }],
         mutationFn: async ({ owner, title, target_amount, template }) => {
             try {
-                const [goalAddress] = await PublicKey.findProgramAddress(
-                    [Buffer.from(title), owner.toBuffer()],
-                    program.programId
-                );
+                // const [goalAddress] = await PublicKey.findProgramAddress(
+                //     [Buffer.from(title), owner.toBuffer()],
+                //     program.programId
+                // );
                 return await program.methods
                     .createGoal(target_amount, title, template)
                     .accounts({
-                        goal: goalAddress,
+                        // goal: goalAddress,
                         owner,
-                        systemProgram: SystemProgram.programId,
+                        // systemProgram: SystemProgram.programId,
                     })
                     .rpc();
             } catch (e) {
@@ -102,16 +102,11 @@ export function useGoalProgramAccount({ account }: { account: PublicKey }) {
     const depositGoal = useMutation<string, Error, DepositArgs>({
         mutationKey: ["goal", "deposit", { cluster }],
         mutationFn: async ({ title, amount, owner }) => {
-            const [goalAddress] = await PublicKey.findProgramAddress(
-                [Buffer.from(title), owner.toBuffer()],
-                program.programId
-            );
-
             return program.methods.deposit(title, amount)
                 .accounts({
-                    goal: goalAddress,
+                    // goal: goalAddress,
                     owner,
-                    systemProgram: SystemProgram.programId,
+                    // systemProgram: SystemProgram.programId,
                 })
                 .rpc();
         },
@@ -127,15 +122,15 @@ export function useGoalProgramAccount({ account }: { account: PublicKey }) {
     const completeGoal = useMutation<string, Error, CompleteArgs>({
         mutationKey: ["goal", "complete", { cluster }],
         mutationFn: async ({ title, owner }) => {
-            const [goalAddress] = await PublicKey.findProgramAddress(
-                [Buffer.from(title), owner.toBuffer()],
-                program.programId
-            );
+            // const [goalAddress] = await PublicKey.findProgramAddress(
+            //     [Buffer.from(title), owner.toBuffer()],
+            //     program.programId
+            // );
             return program.methods.completeGoal(title)
                 .accounts({
-                    goal: goalAddress,
+                    // goal: goalAddress,
                     owner,
-                    systemProgram: SystemProgram.programId,
+                    // systemProgram: SystemProgram.programId,
                 })
                 .rpc();
         }
