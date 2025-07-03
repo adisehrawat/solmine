@@ -2,7 +2,7 @@
 import { AnchorProvider, Program } from '@coral-xyz/anchor'
 import { Cluster, PublicKey } from '@solana/web3.js'
 import SolmineaIDL from './solminea.json'
-import type { Solminea } from '../target/types/solminea'
+import type { Solminea } from './solminea'
 
 // Re-export the generated IDL and type
 export { Solminea, SolmineaIDL }
