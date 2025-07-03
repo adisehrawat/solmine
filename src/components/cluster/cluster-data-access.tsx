@@ -12,9 +12,7 @@ export interface SolanaCluster {
 
 export enum ClusterNetwork {
   Mainnet = 'mainnet-beta',
-  Testnet = 'testnet',
   Devnet = 'devnet',
-  Custom = 'custom',
 }
 
 // By default, we don't configure the mainnet-beta cluster
@@ -26,12 +24,12 @@ export const defaultClusters: SolanaCluster[] = [
     endpoint: clusterApiUrl('devnet'),
     network: ClusterNetwork.Devnet,
   },
-  { name: 'local', endpoint: 'http://localhost:8899' },
   {
-    name: 'testnet',
-    endpoint: clusterApiUrl('testnet'),
-    network: ClusterNetwork.Testnet,
+    name: 'mainnet-beta',
+    endpoint: 'https://api.mainnet-beta.solana.com',
+    network: ClusterNetwork.Mainnet,
   },
+  
 ]
 
 const clusterAtom = atomWithStorage<SolanaCluster>('solana-cluster', defaultClusters[0])
@@ -45,6 +43,7 @@ const activeClustersAtom = atom<SolanaCluster[]>((get) => {
     active: item.name === cluster.name,
   }))
 })
+
 
 const activeClusterAtom = atom<SolanaCluster>((get) => {
   const clusters = get(activeClustersAtom)
@@ -101,11 +100,9 @@ function getClusterUrlParam(cluster: SolanaCluster): string {
       suffix = 'devnet'
       break
     case ClusterNetwork.Mainnet:
-      suffix = ''
+      suffix = 'mainnet'
       break
-    case ClusterNetwork.Testnet:
-      suffix = 'testnet'
-      break
+
     default:
       suffix = `custom&customUrl=${encodeURIComponent(cluster.endpoint)}`
       break

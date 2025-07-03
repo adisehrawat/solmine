@@ -5,19 +5,19 @@ import { lazy } from 'react'
 
 const links = [
   { label: 'Goal', path: '/goal' },
-  { label: 'Account', path: '/account' },
+  { label: 'Account', path: '/Account' },
   
 ]
 
-const LazyAccountIndex = lazy(() => import('@/components/account/account-index-feature'))
-const LazyAccountDetail = lazy(() => import('@/components/account/account-detail-feature'))
+const LazyAccountIndex = lazy(() => import('@/components/Account/account-index-feature'))
+const LazyAccountDetail = lazy(() => import('@/components/Account/account-detail-feature'))
 const LazyBasic = lazy(() => import('@/goal/goal-feature'))
 const LazyDashboard = lazy(() => import('@/components/dashboard/dashboard-feature'))
 
 const routes: RouteObject[] = [
   { index: true, element: <LazyDashboard /> },
   {
-    path: 'account',
+    path: 'Account',
     children: [
       { index: true, element: <LazyAccountIndex /> },
       { path: ':address', element: <LazyAccountDetail /> },

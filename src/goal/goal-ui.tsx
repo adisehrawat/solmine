@@ -6,6 +6,7 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import { BN } from "@coral-xyz/anchor";
 import { PublicKey } from "@solana/web3.js";
 import { useState, memo } from "react";
+import { motion } from "framer-motion";
 
 import {
     Shield, Plane, Car, Home, GraduationCap, Plus, Check,
@@ -188,18 +189,20 @@ export default function GoalUI() {
         setSelectedTemplate(null);
     };
 
-    const mappedGoals = (accounts.data || []).map((acc: any) => {
-        const tpl = goalTemplates.find((t) => t.title === acc.account.template);
-        return {
-            pda: acc.publicKey.toBase58(),
-            title: acc.account.title,
-            target: Number(acc.account.targetAmount.toString()),
-            current: Number(acc.account.depositedAmount.toString()),
-            icon: tpl?.icon ?? Shield,
-            color: tpl?.color ?? ["#6366F1", "#8B5CF6"],
-            category: acc.account.template ?? "Uncategorised",
-        };
-    });
+    const mappedGoals = (accounts.data || [])
+        .filter((acc: any) => acc.account.owner.toBase58() === publicKey?.toBase58())
+        .map((acc: any) => {
+            const tpl = goalTemplates.find((t) => t.title === acc.account.template);
+            return {
+                pda: acc.publicKey.toBase58(),
+                title: acc.account.title,
+                target: Number(acc.account.targetAmount.toString()),
+                current: Number(acc.account.depositedAmount.toString()),
+                icon: tpl?.icon ?? Shield,
+                color: tpl?.color ?? ["#6366F1", "#8B5CF6"],
+                category: acc.account.template ?? "Uncategorised",
+            };
+        });
 
     const totalSaved = mappedGoals.reduce((s, g) => s + g.current, 0);
     const totalSavedInSOL = totalSaved / 1_000_000_000;
@@ -208,12 +211,13 @@ export default function GoalUI() {
         : 0;
 
     return (
-        <div className="min-h-screen bg-gray-900 text-white flex">
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="min-h-screen bg-gray-900 text-white flex"
+        >
             <div className="container mx-auto px-4 py-8 max-w-6xl">
-
-                {/* ----------------------------------- *
-         * Header & "Create goal" button
-         * ----------------------------------- */}
                 <div className="flex justify-between items-center mb-8">
                     <div>
                         <h1 className="text-4xl font-bold text-white mb-2">Your Goals</h1>
@@ -342,6 +346,6 @@ export default function GoalUI() {
                     </DialogContent>
                 </Dialog>
             </div>
-        </div>
+        </motion.div>
     );
 }

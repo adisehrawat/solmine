@@ -3,7 +3,7 @@ import { Toaster } from './ui/sonner'
 import { AppHeader } from '@/components/app-header'
 import React from 'react'
 import { ClusterChecker } from '@/components/cluster/cluster-ui'
-import { AccountChecker } from '@/components/account/account-ui'
+import { AccountChecker } from '@/components/Account/account-ui'
 
 export function AppLayout({
     children,
@@ -14,12 +14,12 @@ export function AppLayout({
 }) {
     return (
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-            <div className="flex flex-col min-h-screen bg-gray-900">
+            <div className="flex flex-col min-h-screen bg-gray-900 p-0">
                 <div>
                     <AppHeader links={links} />
                 </div>
                 
-                <main className="flex-grow container mx-auto">
+                <main className="flex-grow w-full mx-auto">
                     <ClusterChecker>
                         <AccountChecker />
                     </ClusterChecker>

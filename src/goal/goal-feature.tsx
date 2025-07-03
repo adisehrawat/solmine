@@ -1,24 +1,15 @@
 "use client";
 
 import { useWallet } from "@solana/wallet-adapter-react";
-import { AppHero, ellipsify } from "../components/ui/ui-layout";
-import { ExplorerLink } from "../components/cluster/cluster-ui";
-import { useGoalProgram } from "./goal-data-access";
+import { AppHero } from "../components/ui/ui-layout";
 import GoalUI from "./goal-ui";
 
 export default function GoalFeature() {
   const { publicKey } = useWallet();
-  const { programId } = useGoalProgram();
 
   return publicKey ? (
     <div>
       <AppHero title="My Solana Goals" subtitle="Track and achieve your goals on-chain!">
-        <p className="mb-6">
-          <ExplorerLink
-            path={`account/${programId}`}
-            label={ellipsify(programId.toString())}
-          />
-        </p>
         <GoalUI />
       </AppHero>
     </div>

@@ -7,7 +7,7 @@ export default function AccountIndexFeature() {
   const { publicKey } = useWallet()
 
   if (publicKey) {
-    navigate(`/account/${publicKey.toString()}`)
+    navigate(`/Account/${publicKey.toString()}`)
   }
 
   return (

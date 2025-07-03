@@ -3,7 +3,7 @@
 import React, { ReactNode, Suspense, useEffect, useRef } from 'react';
 
 import { WalletButton } from '../solana/solana-provider';
-import { AccountChecker } from '../account/account-ui';
+import { AccountChecker } from '../Account/account-ui';
 import {
   ClusterChecker,
   ClusterUiSelect,
@@ -148,7 +148,7 @@ export function AppHero({
   subtitle: ReactNode;
 }) {
   return (
-    <div className="hero py-[64px]">
+    <div className="hero py-[64px] flex justify-center">
       <div className="hero-content text-center">
         <div className="max-w-2xl">
           {typeof title === 'string' ? (
