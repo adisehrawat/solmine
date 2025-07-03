@@ -1,10 +1,9 @@
 import {
     getSolmineaProgram,
     getSolmineaProgramId,
-    SolmineaIDL
 } from "../../solminea/src/index"
 
-import { Program, BN } from "@coral-xyz/anchor";
+import { BN } from "@coral-xyz/anchor";
 
 import { useConnection } from "@solana/wallet-adapter-react";
 import { Cluster, PublicKey, SystemProgram } from "@solana/web3.js";
@@ -40,6 +39,7 @@ export function useGoalProgram() {
         [cluster]
     );
     const program = getSolmineaProgram(provider);
+    console.log(program);
 
     const accounts = useQuery({
         queryKey: ["goal", "all", { cluster }],
@@ -94,10 +94,6 @@ export function useGoalProgramAccount({ account }: { account: PublicKey }) {
     const { cluster } = useCluster();
     const transactionToast = useTransactionToast();
     const { program, accounts } = useGoalProgram();
-    const programId = new PublicKey(
-        "CzotoFSpeyYweuFNHKWtMxiiiAeaQ6qQJ3CMC2iwitFp"
-    );
-
     const accountQuery = useQuery({
         queryKey: ["goal", "fetch", { cluster, account }],
         queryFn: () => program.account.goal.fetch(account),
