@@ -1,5 +1,3 @@
-
-import React from "react";
 import { Wallet, Star, Shield } from "lucide-react";
 
 const steps = [

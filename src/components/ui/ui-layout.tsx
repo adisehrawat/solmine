@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ReactNode, Suspense, useEffect, useRef } from 'react';
+import { ReactNode, Suspense, useEffect, useRef } from 'react';
 
 import { WalletButton } from '../solana/solana-provider';
 import { AccountChecker } from '../account/account-ui';
